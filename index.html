@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tres Monos - AI Assistant</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NDNPDB4LBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NDNPDB4LBG');
+</script>
+    <style>
+        :root {
+            --text: #ffffff;
+            --bg: #121212; /* Negro profundo */
+            --accent: #ff007f; /* Rosa Neón */
+            --surface: #2a2a2a; /* Gris Cemento */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial Black', Gadget, sans-serif;
+            background-color: var(--bg);
+            background-image: linear-gradient(135deg, #121212 25%, #1a1a1a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            color: var(--text);
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 400px;
+            border: 2px solid var(--surface);
+            background: rgba(0,0,0,0.6);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.2);
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            font-weight: 900;
+            text-shadow: 3px 3px 0px #000, 0 0 10px var(--accent);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #ccc;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .btn-start {
+            background-color: var(--bg);
+            color: var(--accent);
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            /* Estilo Punk/Neo-Brutalista */
+            border: 3px solid var(--accent);
+            box-shadow: 6px 6px 0px var(--accent);
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-start:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 9px 9px 0px var(--accent);
+            background-color: var(--accent);
+            color: #000;
+        }
+
+        .btn-start:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--accent);
+        }
+
+        .footer-text {
+            font-size: 0.7rem; 
+            margin-top: 30px; 
+            color: #555; 
+            font-family: sans-serif;
+        }
+
+        .footer-link {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+        <h1>TRES MONOS</h1>
+        <p>Tamo aca. Tocá el botón para hablar con el mono del Chat.</p>
+        
+        <a id="chatLink" href="#" class="btn-start">
+            ¡DALE, VAMO! 🍸
+        </a>
+
+        <p class="footer-text">
+            Optimized for ChatGPT App<br>
+            Developed by <a href="https://menu-chat.github.io/menuchat/" class="footer-link">MenuChat</a>
+        </p>
+    </div>
+
+    <script>
+        const invisibleSpace = "%E2%A0%80"; 
+        const lineBreak = "%0A";
+        const padding = (invisibleSpace + lineBreak).repeat(25); 
+
+        // Mensaje de bienvenida inicial
+        const welcomeMessage = "%C2%A1Hola!%20Tamo%20aca%20en%20Tres%20Monos.%20%F0%9F%90%B5%0ASoy%20tu%20anfitri%C3%B3n%20ChatMono.%20Presion%C3%A1%20%E2%AC%86%EF%B8%8F%20pa%20empez%C3%A1...";
+        
+        // Instrucciones internas: Obrero del sabor, Tragos primero, Sin Eses.
+const internalInstructions = "System%20Order%3A%20Act%20as%20the%20official%20Tres%20Monos%20assistant.%20Role%3A%20'Obrero%20del%20Sabor'.%20TONE%3A%20Argentine%20Spanish%2C%20informal%2C%20omitting%20final%20's'.%20MENU%20LINK%3A%20https%3A%2F%2Fmenu-chat.github.io%2F3monos%2FMenu3monos.html.%20MANDATORY%20RULES%3A%201.%20STRICT%20INVENTORY%3A%20You%20are%20PROHIBITED%20from%20naming%20any%20drink%20or%20food%20NOT%20explicitly%20written%20in%20the%20link.%20If%20a%20user%20asks%20for%20something%20else%20(like%20IPA%20or%20Golden)%2C%20say%3A%20'Esa%20no%20la%20tenemo%2C%20aca%20hay%20Grolsch%20o%20Imperial%2C%20pero%20mejor%20mandate%20un%20trago'.%202.%20NO%20GENERAL%20KNOWLEDGE%3A%20Do%20not%20use%20your%20own%20knowledge%20about%20bars%20or%20cocktails.%20ONLY%20use%20the%20provided%20link.%203.%20PRIORITY%3A%20Always%20suggest%20cocktails%20from%20'Nuestros%20Cocktails'%20first.%204.%20FLOW%3A%20A.%20Ask%20flavor%20profile%20(bitter%2C%20sweet%2C%20strong).%20B.%20Ask%20about%20food.%20C.%20Check%20restrictions.%205.%20CLOSED%20RECOMMENDATION%3A%20Provide%20exactly%20ONE%20drink%20and%20ONE%20food%20item.%20Say%3A%20'Para%20mi%20ten%C3%A9%20que%20ir%20con%20esto...'";
+
+        const finalUrl = "https://chatgpt.com/?prompt=" + welcomeMessage + padding + internalInstructions + padding + welcomeMessage;
+
+        document.getElementById('chatLink').href = finalUrl;
+    </script>
+</body>
+</html>
